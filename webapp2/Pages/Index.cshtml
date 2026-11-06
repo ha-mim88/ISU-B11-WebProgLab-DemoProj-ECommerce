@@ -4,7 +4,32 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+<div class="container-fluid">
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            @{
+                var si = 0;
+            }
+            @foreach (var slide in Model.HomePageSlides)
+            {
+                <a href="@slide.URL" target="_blank" class="carousel-item @(si == 0 ? "active" : "")">
+                    <img src="@slide.Image" alt="@slide.Title" class="d-block w-100">
+                </a>
+                si++;
+            }
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
 </div>
